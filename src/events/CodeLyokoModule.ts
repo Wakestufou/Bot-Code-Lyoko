@@ -7,7 +7,7 @@ import { guildData } from '../types/dataBase';
 import Logger from '../utils/Logger';
 
 export default new Event('ready', async (client) => {
-    cron.schedule('30 * 14 * * *', async () => {
+    cron.schedule('10 0 * * *', async () => {
         // Do something every day at 00:00:00
         // const random = Math.floor(Math.random() * 86000) * 1000;
 
