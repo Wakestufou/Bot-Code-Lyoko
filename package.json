@@ -1,5 +1,5 @@
 {
-  "name": "bot-feur",
+  "name": "bot-code-lyoko",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Wakestufou/Bot-Feur.git"
+    "url": "git+https://github.com/Wakestufou/Bot-Code-Lyoko.git"
   },
   "author": "Wakestufou",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Wakestufou/Bot-Feur/issues"
+    "url": "https://github.com/Wakestufou/Bot-Code-Lyoko/issues"
   },
-  "homepage": "https://github.com/Wakestufou/Bot-Feur#readme",
+  "homepage": "https://github.com/Wakestufou/Bot-Code-Lyoko#readme",
   "dependencies": {
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
