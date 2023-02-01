@@ -30,16 +30,8 @@ export default new Command({
                             required: true,
                             choices: [
                                 {
-                                    name: 'quoi',
-                                    value: 'quoi',
-                                },
-                                {
-                                    name: 'je suis',
-                                    value: 'je_suis',
-                                },
-                                {
-                                    name: 'FF XIV',
-                                    value: 'ffxiv',
+                                    name: 'Code Lyoko',
+                                    value: 'code_lyoko',
                                 },
                             ],
                         },

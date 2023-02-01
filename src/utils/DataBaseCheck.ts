@@ -28,8 +28,7 @@ class DataBaseCheck {
                     Guild: {
                         id: guild.id,
                         modules: {
-                            quoi: true,
-                            je_suis: true,
+                            code_lyoko: true,
                         },
                     },
                 };

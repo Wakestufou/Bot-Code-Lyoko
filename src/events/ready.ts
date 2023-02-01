@@ -15,9 +15,9 @@ export default new Event('ready', (client) => {
     client.user.setPresence({
         activities: [
             {
-                name: 'vous connaissez ffxiv ???',
+                name: 'vous connaissez code lyoko ???',
                 type: ActivityType.Streaming,
-                url: 'https://www.youtube.com/watch?v=QH2-TGUlwu4',
+                url: 'https://www.youtube.com/watch?v=QCGixQKvTpA&list=PLG5nW1nH7k18DwYx69mkDOYJ-G1CU7dnk',
             },
         ],
         status: 'online',

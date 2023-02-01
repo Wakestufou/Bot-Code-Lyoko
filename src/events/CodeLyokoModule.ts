@@ -7,11 +7,12 @@ import { guildData } from '../types/dataBase';
 import Logger from '../utils/Logger';
 
 export default new Event('ready', async (client) => {
-    cron.schedule('10 0 * * *', async () => {
+    cron.schedule('30 * 14 * * *', async () => {
         // Do something every day at 00:00:00
-        const random = Math.floor(Math.random() * 86000) * 1000;
+        // const random = Math.floor(Math.random() * 86000) * 1000;
 
-        Logger.info(`Wait ${random}ms`, 'FFXIV');
+        const random = 5000;
+        Logger.info(`Wait ${random}ms`, 'code_lyoko');
 
         await setTimeout(random);
 
@@ -32,11 +33,11 @@ export default new Event('ready', async (client) => {
             }
 
             // eslint-disable-next-line no-prototype-builtins
-            if (db.Guild.modules.hasOwnProperty('ffxiv') === false) {
-                db.Guild.modules.ffxiv = true;
+            if (db.Guild.modules.hasOwnProperty('code_lyoko') === false) {
+                db.Guild.modules.code_lyoko = true;
             }
 
-            if (!db.Guild.modules.ffxiv) return;
+            if (!db.Guild.modules.code_lyoko) return;
 
             const guild = client.guilds.cache.get(guildId);
             const TextChannels: TextChannel[] = guild?.channels.cache
@@ -65,7 +66,7 @@ export default new Event('ready', async (client) => {
 
             const ffxivModule = JSON.parse(
                 fs.readFileSync(
-                    `${__dirname}/../../db/modules/ffxiv.json`,
+                    `${__dirname}/../../db/modules/code_lyoko.json`,
                     'utf-8'
                 )
             );

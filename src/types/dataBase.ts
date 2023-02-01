@@ -2,9 +2,7 @@ export type guildData = {
     Guild: {
         id: string;
         modules: {
-            quoi: boolean;
-            je_suis: boolean;
-            ffxiv: boolean;
+            code_lyoko: boolean;
         };
         user_blacklist: string[];
     };
