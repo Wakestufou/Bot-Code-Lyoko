@@ -30,8 +30,12 @@ export default new Command({
                             required: true,
                             choices: [
                                 {
-                                    name: 'Code Lyoko',
+                                    name: 'Ping Code Lyoko',
                                     value: 'code_lyoko',
+                                },
+                                {
+                                    name: 'Code -> Lyoko',
+                                    value: 'code',
                                 },
                             ],
                         },

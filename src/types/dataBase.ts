@@ -3,6 +3,7 @@ export type guildData = {
         id: string;
         modules: {
             code_lyoko: boolean;
+            code: boolean;
         };
         user_blacklist: string[];
     };
