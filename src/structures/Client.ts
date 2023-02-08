@@ -3,6 +3,7 @@ import {
     Client,
     ClientEvents,
     Collection,
+    Partials,
     REST,
     Routes,
 } from 'discord.js';
@@ -20,10 +21,25 @@ export class ExtendedClient extends Client {
     private _clientId: string;
     private _token: string;
     private _commands: Collection<string, CommandType> = new Collection();
+    private _dmcommands: Collection<string, CommandType> = new Collection();
+
     private slashCommands: ApplicationCommandDataResolvable[] = [];
 
     constructor() {
-        super({ intents: 65535 });
+        super({
+            intents: [
+                'Guilds',
+                'GuildMessages',
+                'GuildMessageReactions',
+                'GuildVoiceStates',
+                'GuildMembers',
+                'GuildMessageTyping',
+                'GuildPresences',
+                'DirectMessages',
+                'MessageContent',
+            ],
+            partials: [Partials.Channel],
+        });
 
         if (process.argv.includes('--DEV')) {
             this._rest = new REST({ version: '10' }).setToken(
@@ -52,6 +68,7 @@ export class ExtendedClient extends Client {
                 this._deleteAllCommands();
             }
             this._loadCommands();
+            this._loadDmCommands();
         });
     }
 
@@ -65,6 +82,10 @@ export class ExtendedClient extends Client {
 
     getCommands() {
         return this._commands;
+    }
+
+    getDmCommands() {
+        return this._dmcommands;
     }
 
     private async _loadCommands() {
@@ -99,6 +120,28 @@ export class ExtendedClient extends Client {
             .catch((error) => {
                 Logger.fatal(`Error while loading (/) commands`, error, 500);
             });
+    }
+
+    private async _loadDmCommands() {
+        const commandFiles = await globPromise(
+            `${__dirname}\\..\\dmcommands\\*{.ts,.js}`.replace(/\\/g, '/')
+        );
+
+        Promise.all(
+            commandFiles.map(async (filePath) => {
+                const command: CommandType = await this._importFile(filePath);
+                if (!command.name) return;
+
+                Logger.info(
+                    `Loading DM commands : ${command.name}...`,
+                    'START'
+                );
+
+                this._dmcommands.set(command.name, command);
+            })
+        ).catch((error) => {
+            Logger.fatal(`Error while loading DM commands`, error, 500);
+        });
     }
 
     private async _registerCommands({

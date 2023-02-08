@@ -6,6 +6,7 @@ export default new Command({
     description: 'Replies with Pong !',
     default_member_permissions: String(PermissionFlagsBits.Administrator),
     run: async ({ interaction }) => {
+        if (!interaction) return;
         await interaction.deferReply();
 
         await interaction.followUp({ content: 'Pong !' });

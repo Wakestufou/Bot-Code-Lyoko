@@ -47,6 +47,8 @@ export default new Command({
         },
     ],
     run: async ({ interaction, args }) => {
+        if (!interaction) return;
+        if (!args) return;
         if (!interaction.isCommand()) return;
 
         const subCommand = args.getSubcommand();
