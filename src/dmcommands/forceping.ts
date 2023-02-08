@@ -42,9 +42,44 @@ export default new Command({
 
         // Change time for milliseconds
         const timeArray = time.split(':');
+        if (timeArray.length !== 3) {
+            message
+                .reply('Invalid time format | hours:minutes:seconds')
+                .catch((err) => {
+                    Logger.error("Can't send message", err);
+                });
+            return;
+        }
         let hours = parseInt(timeArray[0]);
         let minutes = parseInt(timeArray[1]);
         let seconds = parseInt(timeArray[2]);
+
+        if (isNaN(hours) || isNaN(minutes) || isNaN(seconds)) {
+            message
+                .reply('Invalid time format | hours:minutes:seconds')
+                .catch((err) => {
+                    Logger.error("Can't send message", err);
+                });
+            return;
+        }
+
+        if (hours < 0 || minutes < 0 || seconds < 0) {
+            message
+                .reply('Invalid time format | hours:minutes:seconds')
+                .catch((err) => {
+                    Logger.error("Can't send message", err);
+                });
+            return;
+        }
+
+        if (hours > 23 || minutes > 59 || seconds > 59) {
+            message
+                .reply('Invalid time format | hours:minutes:seconds')
+                .catch((err) => {
+                    Logger.error("Can't send message", err);
+                });
+            return;
+        }
 
         let milliseconds = hours * 3600000 + minutes * 60000 + seconds * 1000;
 
